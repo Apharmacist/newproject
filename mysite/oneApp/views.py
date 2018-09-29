@@ -38,3 +38,9 @@ def students(request):
     # 给模板传递的是一个字典
     text = {"students": studentsList}
     return render(request, 'oneApp/students.html', text)
+
+def gradeStudent(request,num_id):
+    g = Grades.objects.get(pk=num_id)
+    studentList = g.students_set.all()
+    text1 = {"students": studentList}
+    return render(request, 'oneApp/students.html', text1)
